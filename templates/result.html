@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Regression</title>
+        <link href={{url_for('static', filename='bokeh-0.12.4.min.css')}} rel="stylesheet" type="text/css">
+        <script src={{url_for('static', filename='bokeh-0.12.4.min.js')}}></script>
+        {% autoescape false %}
+        {{ result.script }}
+        {% endautoescape %}
+        <style>
+            .embed-wrapper {
+                width: 50%;
+                height: 400px;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+        <h1>{{ result.reg_type }} on {{name}} dataset.</h1>
+            <i>Coefficients = {{ result.coefficients }}</i>
+        {% autoescape false %}
+        {{ result.div }}
+        {% endautoescape %}
+            {% if result.reg_type != 'Logistic regression' %}
+            <p>SSE = {{ result.error.sse}}</p>
+            <p>SST = {{ result.error.sst}}</p>
+            <p>SSR = {{ result.error.ssr}}</p>
+            <p>r<sup>2</sup> = {{ result.error.r2}}</p>
+            <p>s = {{ result.error.s}}</p>
+            <p>r = {{ result.error.r}}</p>
+            {% else %}
+            <p>Precision = {{ result.error.P}}</p>
+            <p>Recall = {{ result.error.R}}</p>
+            <p>F = {{ result.error.F}}</p>
+            <p>Accuracy = {{ result.error.R}}</p>
+            {% endif %}
+        </center>
+    </body>
+</html>

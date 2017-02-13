@@ -1,0 +1,22 @@
+<!doctype html>
+<title>Regression</title>
+<body>
+    <center>
+        <form enctype=multipart/form-data method="post">
+            <h1>Using regression for prediction.</h1>
+            <dl>
+              <dt>File path to csv:
+              <dd><input type="file" name="path">
+              <dt>Regression type:
+              <dd><select name="type">
+                    <option value="LinReg">Linear regression</option>
+                    <option value="PolyReg">Polynomial regression</option>
+                    <option value="LogReg">Logistic regression</option>
+                    </select>
+              <dt>Polynomial exponent:
+              <dd><input type="int" value="1" name="PolyExp">
+              <dd><input type="submit" >
+            </dl>
+        </form>
+    </center>
+</body>
