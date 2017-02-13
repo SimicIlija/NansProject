@@ -12,11 +12,15 @@ def logistic_regression(par_x, par_y):
     new_c = old_c+0.1
     precision = 0.001
     change = abs(new_c-old_c)
-    while change.any() > precision:
+    i = 0
+    while (change > precision).any():
         old_c = np.array(new_c)
         new_c[0] += -alpha * np.sum(cost_function(old_c, par_x, par_y))
         new_c[1] += -alpha * np.sum(np.multiply(cost_function(old_c, par_x, par_y), par_x))
         change = abs(new_c - old_c)
+        i += 1
+        if i > 20000:
+            break
     return new_c
 
 
